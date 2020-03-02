@@ -1,0 +1,2 @@
+[my_hosts]
+40.114.211.179 ansible_port=22
