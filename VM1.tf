@@ -81,6 +81,12 @@ resource "azurerm_virtual_machine" "mySecVm" {
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
   }
+  storage_image_reference {
+    publisher = "OpenLogic"
+    offer     = "Centos"
+    sku       = "7.6"
+    version   = "latest"
+  }
   os_profile {
     computer_name  = "projetAzure"
     admin_username = "pileUser"
