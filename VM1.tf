@@ -76,7 +76,7 @@ resource "azurerm_virtual_machine" "mySecVm" {
   vm_size               = "Standard_B1ms"
 
   storage_os_disk {
-    name              = "myosdisk20"
+    name              = "disk2"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
