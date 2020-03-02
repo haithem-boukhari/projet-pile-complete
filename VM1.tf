@@ -1,7 +1,13 @@
+data "azurerm_subnet" "example" {
+  name                 = "backend"
+  virtual_network_name = "VnetProjet"
+  resource_group_name  = "projetTerra1"
+}
+
 resource "azurerm_network_security_group" "mySecnsg" {
   name                = "nsgProjet2"
   location            = "West Europe"
-  resource_group_name = "${azurerm_resource_group.test.name}"
+  resource_group_name = "projetTerra1"
 
  security_rule {
     name                       = "SSH"
@@ -41,7 +47,7 @@ resource "azurerm_network_security_group" "mySecnsg" {
 
 resource "azurerm_public_ip" "mySecPubIp" {
   name                = "secpubip"
-  resource_group_name = "${azurerm_resource_group.test.name}"
+  resource_group_name = "projetTerra1"
   location            = "West Europe"
   allocation_method   = "Static"
   domain_name_label   = "my-vm-pile"
@@ -51,12 +57,12 @@ resource "azurerm_public_ip" "mySecPubIp" {
 resource "azurerm_network_interface" "mySecNIC" {
   name                = "nameNIC2"
   location            = "West Europe"
-  resource_group_name = "${azurerm_resource_group.test.name}"
+  resource_group_name = "projetTerra1"
   network_security_group_id = "${azurerm_network_security_group.mySecnsg.id}"
 
   ip_configuration {
     name                          = "nameNICConfig2"
-    subnet_id                     = "${azurerm_subnet.test2.id}"
+    subnet_id                     = "${data.azurerm_subnet.example.id}"
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = "${azurerm_public_ip.mySecPubIp.id}"
   }
