@@ -1,5 +1,5 @@
-data "azurerm_subnet" "example" {
-  name                 = "backend"
+data "azurerm_subnet" "test2" {
+  name                 = "testsubnet2"
   virtual_network_name = "VnetProjet"
   resource_group_name  = "projetTerra1"
 }
@@ -62,7 +62,7 @@ resource "azurerm_network_interface" "mySecNIC" {
 
   ip_configuration {
     name                          = "nameNICConfig2"
-    subnet_id                     = "${data.azurerm_subnet.example.id}"
+    subnet_id                     = "${data.azurerm_subnet.test2.id}"
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = "${azurerm_public_ip.mySecPubIp.id}"
   }
@@ -71,7 +71,7 @@ resource "azurerm_network_interface" "mySecNIC" {
 resource "azurerm_virtual_machine" "mySecVm" {
   name                  = "vm2"
   location              = "West Europe"
-  resource_group_name   = "${azurerm_resource_group.test.name}"
+  resource_group_name   = "projetTerra1"
   network_interface_ids = ["${azurerm_network_interface.mySecNIC.id}"]
   vm_size               = "Standard_B1ms"
 
