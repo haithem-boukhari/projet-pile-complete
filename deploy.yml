@@ -18,6 +18,6 @@
       dest: /home/pileUser/
   - name: deploy and launch war
     shell:
-      cmd: 'nohup java -jar /home/pileUser/devops-1.0.war'
+      cmd: 'java -jar /home/pileUser/devops-1.0.war &'
       #cmd: 'ssh -T pileUser@40.114.211.179 -p22 -f "java -jar /home/pileUser/devops-1.0.war"'
        
