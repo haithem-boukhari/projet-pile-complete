@@ -14,10 +14,10 @@
   tasks:
   - name: copy
     copy:
-      src: /data/jenkins/workspace/prov_vmpile/target/devops-1.0.war
+      src: ./target/devops-1.0.war
       dest: /home/pileUser/
   - name: deploy and launch war
     shell:
-      cmd: 'java -jar /home/pileUser/devops-1.0.war'
+      cmd: 'nohup java -jar /home/pileUser/devops-1.0.war'
       #cmd: 'ssh -T pileUser@40.114.211.179 -p22 -f "java -jar /home/pileUser/devops-1.0.war"'
        
