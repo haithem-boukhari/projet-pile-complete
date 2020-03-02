@@ -74,19 +74,20 @@ resource "azurerm_virtual_machine" "mySecVm" {
   resource_group_name   = "projetTerra1"
   network_interface_ids = ["${azurerm_network_interface.mySecNIC.id}"]
   vm_size               = "Standard_B1ms"
-
-  storage_os_disk {
-    name              = "disk2"
-    caching           = "ReadWrite"
-    create_option     = "FromImage"
-    managed_disk_type = "Standard_LRS"
-  }
+  
   storage_image_reference {
     publisher = "OpenLogic"
     offer     = "Centos"
     sku       = "7.6"
     version   = "latest"
   }
+  storage_os_disk {
+    name              = "myosdisk2"
+    caching           = "ReadWrite"
+    create_option     = "FromImage"
+    managed_disk_type = "Standard_LRS"
+  }
+  
   os_profile {
     computer_name  = "projetAzure"
     admin_username = "pileUser"
