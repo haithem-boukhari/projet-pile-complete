@@ -5,8 +5,11 @@
    - role_java
 
   tasks:
-   - name: copy, deploy and launch war
-     shell: |
-      scp -P 22 /data/jenkins/workspace/prov_vmpile/target/devops-1.0.war pileUser@40.114.211.179:/home/pileUser/
-      ssh -T pileUser@40.114.211.179 -p22 -f "java -jar /home/pileUser/devops-1.0.war"
+  - name: copy
+    shell:
+      cmd: 'scp -P 22 /data/jenkins/workspace/prov_vmpile/target/devops-1.0.war pileUser@40.114.211.179:/home/pileUser/'
+      
+  - name: deploy and launch war
+    shell:
+      cmd: 'ssh -T pileUser@40.114.211.179 -p22 -f "java -jar /home/pileUser/devops-1.0.war"'
        
