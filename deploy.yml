@@ -1,10 +1,10 @@
 ---
-- hosts: localhost
-  become: yes
-  tasks:
-  - name: copy
-    shell:
-      cmd: 'scp -P 22 -p /data/jenkins/workspace/prov_vmpile/target/devops-1.0.war pileUser@40.114.211.179:/home/pileUser/'
+#- hosts: localhost
+#  become: yes
+#  tasks:
+#  - name: copy
+#    shell:
+#      cmd: 'scp -P 22 -p /data/jenkins/workspace/prov_vmpile/target/devops-1.0.war pileUser@40.114.211.179:/home/pileUser/'
 
 - hosts: my_hosts
   become: yes
@@ -12,6 +12,10 @@
    - role_java
    
   tasks:
+  - name: copy
+    copy:
+      src: /data/jenkins/workspace/prov_vmpile/target/devops-1.0.war
+      dest: /home/pileUser/
   - name: deploy and launch war
     shell:
       cmd: 'java -jar /home/pileUser/devops-1.0.war'
