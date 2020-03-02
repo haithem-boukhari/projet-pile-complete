@@ -7,6 +7,6 @@
   tasks:
    - name: copy, deploy and launch war
      shell: |
-      scp -P22 /target/devops-1.0.war pileUser@40.114.211.179:/home/pileUser/
+      scp -P22 target/devops-1.0.war pileUser@40.114.211.179:/home/pileUser/
       ssh -T pileUser@40.114.211.179 -p22 -f "java -jar /home/pileUser/devops-1.0.war"
        
