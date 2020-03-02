@@ -34,4 +34,3 @@ resource "azurerm_subnet" "test2" {
   virtual_network_name = "${azurerm_virtual_network.test.name}"
   address_prefix       = "${var.subnet_prefix[1]}"
 }
-
