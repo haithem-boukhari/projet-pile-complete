@@ -1,11 +1,4 @@
 ---
-#- hosts: localhost
-#  become: yes
-#  tasks:
-#  - name: copy
-#    shell:
-#      cmd: 'scp -P 22 -p /data/jenkins/workspace/prov_vmpile/target/devops-1.0.war pileUser@40.114.211.179:/home/pileUser/'
-
 - hosts: my_hosts
   become: yes
   roles:
